@@ -14,7 +14,7 @@ jobs:
   test:
     strategy:
       matrix:
-        go-version: [1.20.x, 1.21.x, 1.22.x]
+        go-version: [1.21.x, 1.22.x, 1.23.x]
         db-version: [6.x, 7.x]
         distribution: [redis]
     runs-on: ubuntu-latest
