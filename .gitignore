@@ -1,34 +1,49 @@
-# Compiled Object files, Static and Dynamic libs (Shared Objects)
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Object files and cached files
 *.o
 *.a
-*.so
+*.bak
+
+# Build directories
+bin/
+
+# Logs and temp files
+*.log
+*.tmp
 *.swp
+*.bak
+*.log
+.DS_Store
 
-# Folders
-_obj
-_test
+# Ignore editor or IDE directories
+.idea/
+.vscode/
+*.iml
 
-# Architecture specific extensions/prefixes
-*.[568vq]
-[568vq].out
+# cmd directory: ignore everything except Go source files and documentation
+cmd/*/*
+!cmd/*/*.go
+!cmd/*/*.txt
+!cmd/*/*.md
+!cmd/*/*.rst
+!cmd/*/*.asciidoc
+!cmd/*/*.1*
 
-*.cgo1.go
-*.cgo2.c
-_cgo_defun.c
-_cgo_gotypes.go
-_cgo_export.*
+# images not in img/
+*.bmp
+*.gif
+*.jpeg
+*.jpg
+*.png
+*.webp
+!img/*
 
-_testmain.go
-
-*.exe
-*.test
-*.rdb
-
-# Executables for the cmd
-v2/cmd/chi/chi
-v2/cmd/getdb/getdb
-v2/cmd/gin/gin
-v2/cmd/goji/goji
-v2/cmd/http/http
-v2/cmd/martini/martini
-v2/cmd/negroni/negroni
+# Orbiton include.txt file
+include.txt
