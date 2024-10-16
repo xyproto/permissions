@@ -90,5 +90,6 @@ func main() {
 	})
 
 	// Serve
+	fmt.Println("Listening to :3000")
 	http.ListenAndServe(":3000", m)
 }

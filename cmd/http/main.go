@@ -124,5 +124,6 @@ func main() {
 	log.Println("Listening for requests on port 3000")
 
 	// Start listening
+	fmt.Println("Listening to :3000")
 	log.Fatal(s.ListenAndServe())
 }
