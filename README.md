@@ -1,10 +1,10 @@
-# Permissions2 [![Build](https://github.com/xyproto/permissions2/actions/workflows/build.yml/badge.svg)](https://github.com/xyproto/permissions2/actions/workflows/build.yml) [![GoDoc](https://godoc.org/github.com/xyproto/permissions2?status.svg)](http://godoc.org/github.com/xyproto/permissions2) [![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/permissions2)](https://goreportcard.com/report/github.com/xyproto/permissions2)
+# Permissions [![Build](https://github.com/xyproto/permissions/actions/workflows/build.yml/badge.svg)](https://github.com/xyproto/permissions/actions/workflows/build.yml) [![GoDoc](https://godoc.org/github.com/xyproto/permissions?status.svg)](http://godoc.org/github.com/xyproto/permissions) [![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/permissions)](https://goreportcard.com/report/github.com/xyproto/permissions)
 
 Middleware for keeping track of users, login states and permissions.
 
 ## Online API Documentation
 
-[godoc.org](http://godoc.org/github.com/xyproto/permissions2)
+[godoc.org](http://godoc.org/github.com/xyproto/permissions)
 
 ## Features and limitations
 
@@ -42,7 +42,7 @@ import (
     "strings"
 
     "github.com/go-chi/chi/v5"
-    "github.com/xyproto/permissions2/v2"
+    "github.com/xyproto/permissions/v2"
 )
 
 func main() {
@@ -141,7 +141,7 @@ import (
     "log"
 
     "github.com/urfave/negroni"
-    "github.com/xyproto/permissions2/v2"
+    "github.com/xyproto/permissions/v2"
 )
 
 func main() {
@@ -244,7 +244,7 @@ import (
     "log"
 
     "github.com/go-martini/martini"
-    "github.com/xyproto/permissions2/v2"
+    "github.com/xyproto/permissions/v2"
 )
 
 func main() {
@@ -351,7 +351,7 @@ import (
     "log"
 
     "github.com/gin-gonic/gin"
-    "github.com/xyproto/permissions2/v2"
+    "github.com/xyproto/permissions/v2"
 )
 
 func main() {
@@ -466,7 +466,7 @@ import (
     "strings"
     "log"
 
-    "github.com/xyproto/permissions2/v2"
+    "github.com/xyproto/permissions/v2"
     "github.com/zenazn/goji"
 )
 
@@ -578,7 +578,7 @@ import (
     "strings"
     "time"
 
-    "github.com/xyproto/permissions2/v2"
+    "github.com/xyproto/permissions/v2"
     "github.com/xyproto/pinterface"
 )
 
@@ -586,7 +586,7 @@ type permissionHandler struct {
     // perm is a Permissions structure that can be used to deny requests
     // and acquire the UserState. By using `pinterface.IPermissions` instead
     // of `*permissions.Permissions`, the code is compatible with not only
-    // `permissions2`, but also other modules that uses other database
+    // `permissions`, but also other modules that uses other database
     // backends, like `permissionbolt` which uses Bolt.
     perm pinterface.IPermissions
 
@@ -749,9 +749,9 @@ This method can also be used for deleting users, by for example setting a `delet
 
 ## Passing userstate between functions, files and to other Go packages
 
-Using the `pinterface.IUserState` interface (from the [pinterface](https://github.com/xyproto/pinterface) package) makes it possible to pass UserState structs between functions, also in other packages. By using this, it is possible to seamlessly change the database backend from, for instance, Redis ([permissions2](https://github.com/xyproto/permissions2)) to BoltDB ([permissionbolt](https://github.com/xyproto/permissionbolt)).
+Using the `pinterface.IUserState` interface (from the [pinterface](https://github.com/xyproto/pinterface) package) makes it possible to pass UserState structs between functions, also in other packages. By using this, it is possible to seamlessly change the database backend from, for instance, Redis ([permissions](https://github.com/xyproto/permissions)) to BoltDB ([permissionbolt](https://github.com/xyproto/permissionbolt)).
 
-[pstore](https://github.com/xyproto/pstore), [permissionsql](https://github.com/xyproto/permissionsql), [permissionbolt](https://github.com/xyproto/permissionbolt) and [permissions2](https://github.com/xyproto/permissions2) are interchangeable.
+[pstore](https://github.com/xyproto/pstore), [permissionsql](https://github.com/xyproto/permissionsql), [permissionbolt](https://github.com/xyproto/permissionbolt) and [permissions](https://github.com/xyproto/permissions) are interchangeable.
 
 ## Retrieving the underlying Redis database
 
@@ -763,7 +763,7 @@ package main
 import (
     "fmt"
     "github.com/gomodule/redigo/redis"
-    "github.com/xyproto/permissions2/v2"
+    "github.com/xyproto/permissions/v2"
 )
 
 func main() {
