@@ -42,7 +42,7 @@ import (
     "strings"
 
     "github.com/go-chi/chi/v5"
-    "github.com/xyproto/permissions/v2"
+    "github.com/xyproto/permissions"
 )
 
 func main() {
@@ -141,7 +141,7 @@ import (
     "log"
 
     "github.com/urfave/negroni"
-    "github.com/xyproto/permissions/v2"
+    "github.com/xyproto/permissions"
 )
 
 func main() {
@@ -244,7 +244,7 @@ import (
     "log"
 
     "github.com/go-martini/martini"
-    "github.com/xyproto/permissions/v2"
+    "github.com/xyproto/permissions"
 )
 
 func main() {
@@ -351,7 +351,7 @@ import (
     "log"
 
     "github.com/gin-gonic/gin"
-    "github.com/xyproto/permissions/v2"
+    "github.com/xyproto/permissions"
 )
 
 func main() {
@@ -466,7 +466,7 @@ import (
     "strings"
     "log"
 
-    "github.com/xyproto/permissions/v2"
+    "github.com/xyproto/permissions"
     "github.com/zenazn/goji"
 )
 
@@ -578,7 +578,7 @@ import (
     "strings"
     "time"
 
-    "github.com/xyproto/permissions/v2"
+    "github.com/xyproto/permissions"
     "github.com/xyproto/pinterface"
 )
 
@@ -763,7 +763,7 @@ package main
 import (
     "fmt"
     "github.com/gomodule/redigo/redis"
-    "github.com/xyproto/permissions/v2"
+    "github.com/xyproto/permissions"
 )
 
 func main() {
@@ -795,6 +795,6 @@ Note that the `redigo` repository was recently moved to `https://github.com/gomo
 
 ## General information
 
-* Version: 2.6.9
+* Version: 1.0.0
 * License: BSD-3
 * Alexander F. Rødseth &lt;xyproto@archlinux.org&gt;
