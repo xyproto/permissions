@@ -2,6 +2,8 @@
 
 Middleware for keeping track of users, login states and permissions.
 
+This is the backwards-compatible continuation of [permissions2](https://github.com/xyproto/permissions2) (513 stars at the time of writing).
+
 ## Online API Documentation
 
 [godoc.org](http://godoc.org/github.com/xyproto/permissions)
