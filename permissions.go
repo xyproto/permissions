@@ -136,17 +136,16 @@ func PermissionDenied(w http.ResponseWriter, req *http.Request) {
 func (perm *Permissions) Rejected(w http.ResponseWriter, req *http.Request) bool {
 	path := req.URL.Path // the path of the url that the user wish to visit
 
-	// If it's not "/" and set to be public regardless of permissions
+	// If root is set to be public regardless of permissions and the path is "/", accept it
 	if perm.rootIsPublic && path == "/" {
-		return false
+		return false // accept
 	}
 
 	// Reject if it is an admin page and user does not have admin permissions
 	for _, prefix := range perm.adminPathPrefixes {
 		if strings.HasPrefix(path, prefix) {
 			if !perm.state.AdminRights(req) {
-				// Reject
-				return true
+				return true // reject
 			}
 		}
 	}
@@ -155,8 +154,7 @@ func (perm *Permissions) Rejected(w http.ResponseWriter, req *http.Request) bool
 	for _, prefix := range perm.userPathPrefixes {
 		if strings.HasPrefix(path, prefix) {
 			if !perm.state.UserRights(req) {
-				// Reject
-				return true
+				return true // reject
 			}
 		}
 	}
@@ -164,13 +162,12 @@ func (perm *Permissions) Rejected(w http.ResponseWriter, req *http.Request) bool
 	// Don't reject if it's a public page
 	for _, prefix := range perm.publicPathPrefixes {
 		if strings.HasPrefix(path, prefix) {
-			// Don't reject
-			return false
+			return false // accept
 		}
 	}
 
-	// Reject
-	return true
+	// Otherwise
+	return true // reject
 }
 
 // Middleware handler (compatible with Negroni)
