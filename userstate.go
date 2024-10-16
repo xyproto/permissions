@@ -68,10 +68,10 @@ type UserState struct {
 	usernames         *simpleredis.Set            // A list of all usernames, for easy enumeration
 	unconfirmed       *simpleredis.Set            // A list of unconfirmed usernames, for easy enumeration
 	pool              *simpleredis.ConnectionPool // A connection pool for Redis
-	dbindex           int                         // Redis database index
 	cookieSecret      string                      // Secret for storing secure cookies
-	cookieTime        int64                       // How long a cookie should last, in seconds
 	passwordAlgorithm string                      // Password hashing algorithm ("sha256", "bcrypt" or "bcrypt+").
+	dbindex           int                         // Redis database index
+	cookieTime        int64                       // How long a cookie should last, in seconds
 }
 
 // NewUserStateSimple will create a new *UserState that can be used for

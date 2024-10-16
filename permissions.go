@@ -16,11 +16,11 @@ const (
 // Permissions is a structure that keeps track of the permissions for various path prefixes
 type Permissions struct {
 	state              *UserState
+	denied             http.HandlerFunc
 	adminPathPrefixes  []string
 	userPathPrefixes   []string
 	publicPathPrefixes []string
 	rootIsPublic       bool
-	denied             http.HandlerFunc
 }
 
 // New will initialize a Permissions struct with all the default settings.
@@ -60,6 +60,7 @@ func NewWithRedisConf2(dbindex int, hostPort string) (*Permissions, error) {
 func NewPermissions(state *UserState) *Permissions {
 	// default permissions
 	return &Permissions{state,
+		PermissionDenied,
 		[]string{"/admin"},         // admin path prefixes
 		[]string{"/repo", "/data"}, // user path prefixes
 		[]string{"/",
@@ -72,8 +73,7 @@ func NewPermissions(state *UserState) *Permissions {
 			"/favicon.ico",
 			"/robots.txt",
 			"/sitemap_index.xml"}, // public
-		true,
-		PermissionDenied}
+		true} // root ("/") is public?
 }
 
 // SetDenyFunction can be used for specifying a http.HandlerFunc that will be used when the permissions are denied.
