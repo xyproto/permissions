@@ -791,8 +791,6 @@ func main() {
 }
 ```
 
-Note that the `redigo` repository was recently moved to `https://github.com/gomodule/redigo`. The above code will not work if you use the old redigo package.
-
 ## General information
 
 * Version: 1.0.0
