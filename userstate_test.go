@@ -143,7 +143,7 @@ func TestPasswordAlgoMatching(t *testing.T) {
 	}
 }
 
-func TestUserStateKeeper(t *testing.T) {
+func TestUserStateKeeper(_ *testing.T) {
 	userstate := NewUserStateSimple()
 
 	// Check that the userstate qualifies for the IUserState interface
