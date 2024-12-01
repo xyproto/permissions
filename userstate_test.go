@@ -1,9 +1,10 @@
 package permissions
 
 import (
-	"github.com/xyproto/pinterface"
 	"testing"
 	"time"
+
+	"github.com/xyproto/pinterface"
 )
 
 func TestPerm(t *testing.T) {
@@ -57,7 +58,6 @@ func TestPasswordBasic(t *testing.T) {
 	if userstate.PasswordAlgo() != "sha256" {
 		t.Error("Error, setting password algorithm failed")
 	}
-
 }
 
 func TestPasswordBasic2(t *testing.T) {
@@ -79,7 +79,6 @@ func TestPasswordBasic2(t *testing.T) {
 	if userstate.PasswordAlgo() != "sha256" {
 		t.Error("Error, setting password algorithm failed")
 	}
-
 }
 
 // Check if the functionality for backwards compatible hashing works
@@ -317,4 +316,65 @@ func TestTiming(t *testing.T) {
 		t.Error("Checking passwords of different lengths should not take much longer or shorter")
 	}
 	//fmt.Println(baseMin, base_max, elapsed1, elapsed2, elapsed3, elapsed4)
+}
+
+func TestHasEmail(t *testing.T) {
+	const (
+		username1 = "alice"
+		password1 = "password1"
+		email1    = "alice@example.com"
+
+		username2 = "bob"
+		password2 = "password2"
+		email2    = "bob@example.com"
+
+		username3 = "charlie"
+		password3 = "password3"
+		email3    = "charlie@example.com"
+
+		nonExistentEmail = "dave@example.com"
+	)
+
+	userstate := NewUserStateSimple()
+	defer userstate.Close()
+
+	// Add test users
+	userstate.AddUser(username1, password1, email1)
+	defer userstate.RemoveUser(username1)
+
+	userstate.AddUser(username2, password2, email2)
+	defer userstate.RemoveUser(username2)
+
+	userstate.AddUser(username3, password3, email3)
+	defer userstate.RemoveUser(username3)
+
+	// Test HasEmail with an existing email
+	username, err := userstate.HasEmail(email2)
+	if err != nil {
+		t.Errorf("Expected to find email '%s', but got error: %v", email2, err)
+	} else if username != username2 {
+		t.Errorf("Expected username '%s', but got '%s'", username2, username)
+	} else {
+		t.Logf("Successfully found username '%s' for email '%s'", username, email2)
+	}
+
+	// Test HasEmail with a non-existent email
+	username, err = userstate.HasEmail(nonExistentEmail)
+	if err != ErrNotFound {
+		t.Errorf("Expected ErrNotFound for email '%s', but got error: %v", nonExistentEmail, err)
+	} else if username != "" {
+		t.Errorf("Expected empty username for non-existent email, but got '%s'", username)
+	} else {
+		t.Logf("Correctly did not find username for non-existent email '%s'", nonExistentEmail)
+	}
+
+	// Test HasEmail with an empty email
+	username, err = userstate.HasEmail("")
+	if err != ErrNotFound {
+		t.Errorf("Expected ErrNotFound for empty email, but got error: %v", err)
+	} else if username != "" {
+		t.Errorf("Expected empty username for empty email, but got '%s'", username)
+	} else {
+		t.Log("Correctly handled empty email input")
+	}
 }
