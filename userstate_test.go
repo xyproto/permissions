@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/xyproto/pinterface"
+	"github.com/xyproto/pinterface/v2"
 )
 
 func TestPerm(t *testing.T) {
