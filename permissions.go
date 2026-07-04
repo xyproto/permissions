@@ -141,9 +141,13 @@ func (perm *Permissions) Rejected(_ http.ResponseWriter, req *http.Request) bool
 		return false // accept
 	}
 
+	// Make sure to compare paths in a case-insensitive way,
+	// because some operating systems uses case-insensitive filesystems.
+	lowerPath := strings.ToLower(path)
+
 	// Reject if it is an admin page and user does not have admin permissions
 	for _, prefix := range perm.adminPathPrefixes {
-		if strings.HasPrefix(path, prefix) {
+		if strings.HasPrefix(lowerPath, strings.ToLower(prefix)) {
 			if !perm.state.AdminRights(req) {
 				return true // reject
 			}
@@ -152,7 +156,7 @@ func (perm *Permissions) Rejected(_ http.ResponseWriter, req *http.Request) bool
 
 	// Reject if it's a user page and the user does not have user rights
 	for _, prefix := range perm.userPathPrefixes {
-		if strings.HasPrefix(path, prefix) {
+		if strings.HasPrefix(lowerPath, strings.ToLower(prefix)) {
 			if !perm.state.UserRights(req) {
 				return true // reject
 			}
@@ -161,7 +165,7 @@ func (perm *Permissions) Rejected(_ http.ResponseWriter, req *http.Request) bool
 
 	// Don't reject if it's a public page
 	for _, prefix := range perm.publicPathPrefixes {
-		if strings.HasPrefix(path, prefix) {
+		if strings.HasPrefix(lowerPath, strings.ToLower(prefix)) {
 			return false // accept
 		}
 	}
