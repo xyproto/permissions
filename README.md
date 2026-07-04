@@ -1,7 +1,7 @@
 # Permissions 3
+
 [![Build](https://github.com/xyproto/permissions/actions/workflows/build.yml/badge.svg)](https://github.com/xyproto/permissions/actions/workflows/build.yml)
 [![GoDoc](https://godoc.org/github.com/xyproto/permissions?status.svg)](http://godoc.org/github.com/xyproto/permissions)
-[![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/permissions)](https://goreportcard.com/report/github.com/xyproto/permissions)
 
 Middleware for keeping track of users, login states and permissions.
 
@@ -798,6 +798,6 @@ func main() {
 
 ## General information
 
-* Version: 1.1.0
+* Version: 1.1.1
 * License: BSD-3
 * Alexander F. Rødseth &lt;xyproto@archlinux.org&gt;
