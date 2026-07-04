@@ -12,7 +12,7 @@ require (
 	github.com/xyproto/pinterface/v2 v2.1.2
 	github.com/xyproto/simpleredis/v2 v2.9.0
 	github.com/zenazn/goji v1.0.1
-	golang.org/x/crypto v0.50.0
+	golang.org/x/crypto v0.53.0
 )
 
 require (
