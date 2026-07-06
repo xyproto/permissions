@@ -8,7 +8,6 @@ require (
 	github.com/gomodule/redigo v1.9.3
 	github.com/urfave/negroni v1.0.0
 	github.com/xyproto/cookie/v2 v2.2.7
-	github.com/xyproto/pinterface v1.6.0
 	github.com/xyproto/pinterface/v2 v2.1.2
 	github.com/xyproto/simpleredis/v2 v2.9.0
 	github.com/zenazn/goji v1.0.1
